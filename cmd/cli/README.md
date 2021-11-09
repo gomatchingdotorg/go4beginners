@@ -2,11 +2,11 @@
 
 ## Golang standard libraries: flag
 
-Go provides us a simple way to build a commad-line tool (CLI) using only standard libraries (flag). I will help you step by step walk through the process to make a CLI.
+Go provides us a simple way to build a command-line tool (CLI) using only standard libraries (flag). I will help you step by step walk through the process to make a CLI.
 
-In this exxample, we will create a CLI tool that will ... We will describe in detail about the function of the tool in detail below:
+In this example, we will create a CLI tool that will ... We will describe in detail the function of the tool in detail below:
 
-First, please take a look with our example.
+First, please take a look at our example.
 
 ```bash
 	textPtr := flag.String("text", "", "Hello! Welcome to gomatching.org")
@@ -16,7 +16,7 @@ First, please take a look with our example.
 	fmt.Printf("textPtr: %s,  uniquePtr: %t\n", *textPtr, *uniquePtr)
 ```
 
-The command bellow will run and test our example.
+The command below will run and test our example.
 
 ```bash
 $ go build
@@ -40,16 +40,15 @@ The result is:
 textPtr: hello gomatching,  uniquePtr: false
 ```
 
-2. Let 's me explain you about the code
+2. Let's me explain to you about the code
 
-## Third party libraries:
+## Third-party libraries:
 
 ### urfave/cli:
 
 @https://github.com/urfave/cli
 
-Such library helps developers building command line apps easier by many uasage functions.
-Some of them are making help doccumentation,
+This library helps developers build command-line apps easier by many useful functions. Some of them are making help documentation,
 
 ** Getting started **
 
@@ -59,7 +58,7 @@ $ go get "github.com/urfave/cli/v2"
 
 ** Examples **
 
-1. Make help doccument
+1. Make help document
 
 ```bash
 func HowToUseUrfaveV2_Hello() {
@@ -87,7 +86,7 @@ $ go build
 $ ./cli help
 ```
 
-Cli generates help text bellow:
+Cli generates help text below:
 
 ```
 NAME:
