@@ -4,14 +4,40 @@
 
 Go provides us a simple way to build a commad-line tool (CLI) using only standard libraries (flag). I will help you step by step walk through the process to make a CLI.
 
-In this exxample, we will create a CLI tool XXX that will ... We will describe in detail about the function of the tool in detail below:
+In this exxample, we will create a CLI tool that will ... We will describe in detail about the function of the tool in detail below:
 
-1. First, please take a look with our example.
-   The command bellow will run and test our example.
+First, please take a look with our example.
+
+```bash
+	textPtr := flag.String("text", "", "Hello! Welcome to gomatching.org")
+	uniquePtr := flag.Bool("unique", false, "Measure unique values of a metric.")
+	flag.Parse()
+
+	fmt.Printf("textPtr: %s,  uniquePtr: %t\n", *textPtr, *uniquePtr)
+```
+
+The command bellow will run and test our example.
 
 ```bash
 $ go build
 $ ./main
+```
+
+The result is:
+
+```
+textPtr: ,  uniquePtr: false
+```
+
+```bash
+$ go build
+$ ./main  --text "hello gomatching"
+```
+
+The result is:
+
+```
+textPtr: hello gomatching,  uniquePtr: false
 ```
 
 2. Let 's me explain you about the code

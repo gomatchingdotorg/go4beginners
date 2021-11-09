@@ -10,17 +10,17 @@ import (
 )
 
 func main() {
+	HowToUseFlag()
 	//HowToUseUrfaveV2_Hello()
-	HowToUseUrfaveV2_Flag()
+	//HowToUseUrfaveV2_Flag()
 }
 
 func HowToUseFlag() {
-	textPtr := flag.String("text", "", "Text to parse.")
-	metricPtr := flag.String("metric", "chars", "Metric {chars|words|lines};.")
+	textPtr := flag.String("text", "", "Hello! Welcome to gomatching.org")
 	uniquePtr := flag.Bool("unique", false, "Measure unique values of a metric.")
 	flag.Parse()
 
-	fmt.Printf("textPtr: %s, metricPtr: %s, uniquePtr: %t\n", *textPtr, *metricPtr, *uniquePtr)
+	fmt.Printf("textPtr: %s,  uniquePtr: %t\n", *textPtr, *uniquePtr)
 }
 
 func HowToUseUrfaveV2_Hello() {
