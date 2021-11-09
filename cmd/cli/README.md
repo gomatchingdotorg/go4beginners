@@ -18,20 +18,22 @@ $ ./main
 
 ## Third party libraries:
 
-1. urfave/cli
-   @https://github.com/urfave/cli
+### urfave/cli:
+
+@https://github.com/urfave/cli
 
 Such library helps developers building command line apps easier by many uasage functions.
 Some of them are making help doccumentation,
 
-- Getting started
+** Getting started **
 
 ```bash
 $ go get "github.com/urfave/cli/v2"
 ```
 
-- Example
-  > Make help doccument
+** Examples **
+
+1. Make help doccument
 
 ```bash
 func HowToUseUrfaveV2_Hello() {
@@ -73,6 +75,73 @@ COMMANDS:
 
 GLOBAL OPTIONS:
    --help, -h  show help (default: false)
+```
+
+2. Using arguments
+   Using Args function con cli.Context to get the arguments:
+
+```bash
+fmt.Printf("Hello %q", c.Args().Get(0))
+```
+
+Run our CLI
+
+```bash
+$ go build
+$ ./cli Tian
+```
+
+The result is:
+
+```bash*** GOMATCHING ***
+Hello "Tian"%
+```
+
+3. Flags
+   Using cli.Context to query flags:
+
+```bash
+var nodeType string
+	app := &cli.App{
+		Flags: []cli.Flag{
+			&cli.StringFlag{
+				Name:        "node",
+				Value:       "cluster.gomatching.org",
+				Usage:       "register new node",
+				Destination: &nodeType,
+			},
+		},
+		Action: func(c *cli.Context) error {
+			name := "node.gomatching.org"
+			if c.NArg() > 0 {
+				name = c.Args().Get(0)
+			}
+			if c.String("node") == "chat" {
+				fmt.Println("Register new chat service: ", name)
+			} else {
+				fmt.Println("Register new database service", name)
+			}
+			return nil
+		},
+	}
+
+	err := app.Run(os.Args)
+	if err != nil {
+		log.Fatal(err)
+	}
+```
+
+The result is:
+./cli
+
+```bash
+	Register new database service node.gomatching.org
+```
+
+./cli chat
+
+```bash
+	Register new database service chat
 ```
 
 ## License

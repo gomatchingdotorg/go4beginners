@@ -10,7 +10,8 @@ import (
 )
 
 func main() {
-	HowToUseUrfaveV2_Hello()
+	//HowToUseUrfaveV2_Hello()
+	HowToUseUrfaveV2_Flag()
 }
 
 func HowToUseFlag() {
@@ -29,6 +30,37 @@ func HowToUseUrfaveV2_Hello() {
 		Action: func(c *cli.Context) error {
 			fmt.Println("*** GOMATCHING ***")
 			fmt.Printf("Hello %q", c.Args().Get(0))
+			return nil
+		},
+	}
+
+	err := app.Run(os.Args)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+func HowToUseUrfaveV2_Flag() {
+	var nodeType string
+	app := &cli.App{
+		Flags: []cli.Flag{
+			&cli.StringFlag{
+				Name:        "node",
+				Value:       "cluster.gomatching.org",
+				Usage:       "register new node",
+				Destination: &nodeType,
+			},
+		},
+		Action: func(c *cli.Context) error {
+			name := "node.gomatching.org"
+			if c.NArg() > 0 {
+				name = c.Args().Get(0)
+			}
+			if c.String("node") == "chat" {
+				fmt.Println("Register new chat service: ", name)
+			} else {
+				fmt.Println("Register new database service", name)
+			}
 			return nil
 		},
 	}
